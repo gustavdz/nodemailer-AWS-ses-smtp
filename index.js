@@ -7,8 +7,8 @@ var dotenv = require('dotenv').config();
 app.post("/send-email", (req, res) => {
 
   var mailOptions = {
-    from: 'Ing. Gustavo Decker <admin@gustavodecker.com>',
-    to: 'gustavdz@gmail.com',
+    from: 'Nombre de Remitente <remitente@email.com>',
+    to: 'destinatario@email.com',
     text: 'This is some text',
     html: '<b>This is some HTML</b>',
   };
