@@ -7,10 +7,16 @@ var dotenv = require('dotenv').config();
 app.post("/send-email", (req, res) => {
 
   var mailOptions = {
-    from: 'Nombre de Remitente <remitente@email.com>',
-    to: 'destinatario@email.com',
+    from: process.env.FROM,
+    to: process.env.TO,
     text: 'This is some text',
-    html: '<b>This is some HTML</b>',
+    html: '<p>This is some HTML</p>',
+    subject: 'Nodemailer SMTP Subject',
+    list: {
+        unsubscribe: {
+            url: 'http://urlparacancelarsuscripcion.com'
+        }
+    }
   };
 
   // Send e-mail using AWS SES
@@ -29,7 +35,6 @@ app.post("/send-email", (req, res) => {
   // });
 
   // Send e-mail using SMTP
-  mailOptions.subject = 'Nodemailer SMTP transporter';
   var smtpTransporter = nodemailer.createTransport({
     port: 465,
     host: process.env.AWS_REGION,
