@@ -11,10 +11,10 @@ app.post("/send-email", (req, res) => {
     to: process.env.TO,
     text: 'This is some text',
     html: '<p>This is some HTML</p>',
-    subject: 'Nodemailer SMTP Subject',
+    subject: 'Nodemailer SMTP Subject8',
     list: {
         unsubscribe: {
-            url: 'http://urlparacancelarsuscripcion.com'
+            url: `${process.env.UNSUBSCRIBEURL}`
         }
     }
   };
